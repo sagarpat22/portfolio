@@ -86,13 +86,13 @@ footer{border-top:1px solid var(--line);padding:22px 5vw;text-align:center;color
 </style>
 </head>
 <body>
-<nav class="nav"><a class="logo" href="#/">Sagar Patankar</a><a href="#/projects">Projects</a><a href="#/skills">Skills</a><a href="#/internship">Internship</a><a href="#/contact">Contact</a><button id="th" type="button">Light / Dark</button></nav>
+<nav class="nav"><a class="logo" href="#" data-go="home">Sagar Patankar</a><a href="#" data-go="projects">Projects</a><a href="#" data-go="skills">Skills</a><a href="#" data-go="internship">Internship</a><a href="#" data-go="contact">Contact</a><button id="th" type="button">Light / Dark</button></nav>
 
 <div id="home">
 <header class="hero"><div class="wrap">
 <h1>Heat, flow and the fixtures that hold them.</h1>
 <p class="lead">Mechanical engineer working on thermal FEA, CFD and precision fixture design. I write my own solvers in MATLAB and validate them against ANSYS.</p>
-<a class="btn" href="#/projects">See projects</a><a class="btn alt" href="#/contact">Get in touch</a>
+<a class="btn" href="#" data-go="projects">See projects</a><a class="btn alt" href="#" data-go="contact">Get in touch</a>
 </div></header>
 <main class="wrap">
 <section id="projects"><h2>Projects</h2><div class="cards" id="cards"></div></section>
@@ -108,14 +108,14 @@ footer{border-top:1px solid var(--line);padding:22px 5vw;text-align:center;color
 <li>Witnessed switchgear and control unit assembly on the shop floor, building understanding of electromechanical integration and production sequencing.</li>
 <li>Observed the use of CMM machines and precision gauges for dimensional inspection, developing awareness of manufacturing-to-specification validation.</li></ul></div></section>
 <section class="contact" id="contact"><div class="box"><h2>Let's talk</h2><p>Open to internships and entry-level roles in thermal analysis, CFD and mechanical design.</p>
-<a class="btn" href="mailto:sagarpatankar2017@gmail.com">Email me</a><a class="btn alt" href="https://www.linkedin.com/in/sagarpatankar1" target="_blank" rel="noopener">LinkedIn</a></div></section>
+<a class="btn" href="sagarpatankar2017@gmail.com">Email me</a><a class="btn alt" href="https://www.linkedin.com/in/sagarpatankar1" target="_blank" rel="noopener">LinkedIn</a></div></section>
 </main></div>
 
 <div id="detail" hidden></div>
-<footer>© 2026 Sagar Patankar</footer>
+<footer>© Sagar Patankar</footer>
 
 <script>
-/* To add a real image: put its link inside the quotes after the caption, e.g. ["Temperature contour","https://..."] */
+/* To add a real image: put its file name inside the quotes after the caption, e.g. ["Temperature contour","my-image.png"] */
 var P=[
 {k:"0.034°C",kl:"gradient across base plate",t1:"t1",
  t:"Thermal Calibration Fixture with Floating-Pin Compensation",
@@ -125,7 +125,7 @@ var P=[
  st:[["0.034°C","Temperature gradient across the 150×120 mm base plate (79.966°C to 80.000°C)"],["0.3%","Largest difference between ANSYS and hand calculation for thermal growth (max total deformation 0.1913 mm)"],["+0.0404 mm","Worst-case safety margin on the 0.35 mm floating pin slot (+0.0997 mm with RSS)"],["8.2×10⁷","Cycles to fatigue failure, a conservative fully restrained estimate"]],
  steps:[["Problem and hand calculation","The Al 6061 plate (150×120×10 mm) heats from 25°C to 80°C (ΔT = 55°C). Measured from the datum pin, free growth is 0.1752 mm in X to the far edge and 0.1918 mm at the far corner."],["Fixture design","A fixed Ø6 mm datum pin and a floating 6×6.35 mm oval slot, following the 3-2-1 locating principle. The slot only has to absorb the X-direction growth."],["Feature sizing to standards","PCB slot 1.8 mm (IPC-2221B), heater recess 102×102×1.5 mm for a 50 W Kapton heater, Ø6 mm pins (ISO 8734), TIM groove 0.5 mm, thermocouple channel 1.5×1 mm."],["Steady-state thermal analysis","ANSYS 2026 R1: fixed 80°C on the bottom face, natural convection (h = 10 W/m²·K, 25°C) on the top face, adiabatic side walls."],["Coupled static structural analysis","Thermal result imported with a 25°C stress-free reference. The plate is fixed at the datum hole only, so it expands freely away from it."],["Validation against hand calculation","Compared X growth, X span, Y growth and corner resultant with the datum-referenced calculations."],["Tolerance stack-up","Four X-direction contributors (±0.010, ±0.050, ±0.025, ±0.050 mm) give ±0.135 mm worst case and ±0.0757 mm RSS. Thermal growth is deterministic, so it is added directly."],["Heater and fatigue checks","Hand calculations for heater power and for thermal-cycling fatigue life using Modified Goodman and Basquin's law."]],
  f:[["Base plate top view with dimensions (datum hole at left, floating slot at right)","p1-fig1.png"],["Base plate detail (isometric)","p1-fig2.png"],["CAD model of the base plate","p1-fig3.png"],["Steady-state temperature distribution (79.966°C to 80.000°C)","p1-fig4.png"],["Directional deformation, X axis (maximum 0.1746 mm)","p1-fig5.png"],["Total deformation (maximum 0.1913 mm at the far corner, 0 at the datum)","p1-fig6.png"]],
- r:["Thermal: the plate is almost isothermal, with a gradient of 0.034°C. A one-dimensional hand check gives 0.033°C.","Deformation: maximum X growth is 0.1746 mm at the far edge and maximum total deformation is 0.1913 mm at the far corner, with 0 at the datum. The contours are centred on the fixed pin, so the plate expands freely away from it.","Validation: all deformation results agree with hand calculation within 0.3%, well inside a 5% FEA acceptance threshold.","Slot: thermal growth of 0.1746 mm plus the worst-case tolerance stack of 0.135 mm gives a demand of 0.3096 mm against 0.35 mm of clearance. Widening the slot to 6.50 mm would raise the worst-case margin to +0.190 mm.","Heater: the 50 W heater holds 80°C with a 5.05x margin (9.9 W needed) and warms the plate in about 10 minutes. A 100 W heater is recommended for warm-up under 5 minutes.","Fatigue: the restrained bulk stress is 89.4 MPa and the local stress at the pin hole is 178.9 MPa (65% of yield). Estimated life is 8.2×10⁷ cycles, or 2.1×10⁷ with a safety factor of 4. The ANSYS maximum of 465.82 MPa is a stress singularity at the rigid constraint, not a real material stress.","Limitations and future work: the model is plate-only with idealised boundary conditions. Next steps are adding the PCB with pin contact, applying the heater as a 50 W flux, a transient warm-up run, and a mesh-independence study."]},,
+ r:["Thermal: the plate is almost isothermal, with a gradient of 0.034°C. A one-dimensional hand check gives 0.033°C.","Deformation: maximum X growth is 0.1746 mm at the far edge and maximum total deformation is 0.1913 mm at the far corner, with 0 at the datum. The contours are centred on the fixed pin, so the plate expands freely away from it.","Validation: all deformation results agree with hand calculation within 0.3%, well inside a 5% FEA acceptance threshold.","Slot: thermal growth of 0.1746 mm plus the worst-case tolerance stack of 0.135 mm gives a demand of 0.3096 mm against 0.35 mm of clearance. Widening the slot to 6.50 mm would raise the worst-case margin to +0.190 mm.","Heater: the 50 W heater holds 80°C with a 5.05x margin (9.9 W needed) and warms the plate in about 10 minutes. A 100 W heater is recommended for warm-up under 5 minutes.","Fatigue: the restrained bulk stress is 89.4 MPa and the local stress at the pin hole is 178.9 MPa (65% of yield). Estimated life is 8.2×10⁷ cycles, or 2.1×10⁷ with a safety factor of 4. The ANSYS maximum of 465.82 MPa is a stress singularity at the rigid constraint, not a real material stress.","Limitations and future work: the model is plate-only with idealised boundary conditions. Next steps are adding the PCB with pin contact, applying the heater as a 50 W flux, a transient warm-up run, and a mesh-independence study."]},
 {k:"~12%",kl:"deviation from ANSYS Fluent",t1:"t2",
  t:"Transient Finite Volume Solver for IGBT Thermal Management",
  s:"An in-house MATLAB FVM solver for conjugate heat transfer in a mini-channel IGBT cooler at 104 W/cm².",
@@ -135,7 +135,7 @@ var P=[
  steps:[["Discretisation","Applied the Finite Volume Method on a structured non-uniform mesh for conjugate heat transfer."],["Flow coupling","Used the SIMPLE algorithm with transient time-marching."],["Test case","Ran the cooler at 104 W/cm² heat flux."],["Benchmark","Ran the same case in ANSYS Fluent for comparison."],["Verification","Used mesh-independence and convergence studies to find and fix the sources of discrepancy."],["Transients","Simulated flow stop–restart cycles to see how temperature rises."]],
  f:[["Mesh of the cooler",""],["Temperature field, MATLAB vs Fluent",""],["Mesh-independence study",""],["Temperature rise during flow stop–restart",""]],
  r:["The solver reached about 12% deviation from ANSYS Fluent.","Flow stop–restart runs show how fast temperature rises, which applies directly to calibration station thermal cycling.","Writing the solver shows thermal analysis skills beyond commercial tools."]},
-{{k:"0.88",kl:"combustion efficiency, vs 0.67 single strut",t1:"t3",
+{k:"0.88",kl:"combustion efficiency, vs 0.67 single strut",t1:"t3",
  t:"Modified Split-Strut Scramjet Combustor for Enhanced Mixing and Combustion",
  s:"ANSYS Fluent study of a 4 mm gap split-strut with backward-facing steps against the DLR single-strut baseline.",
  tools:["ANSYS Fluent","SST k-ω","Finite-rate/eddy-dissipation","H₂–air combustion"],
@@ -146,25 +146,26 @@ var P=[
  r:["Validation: the model captures the pressure rise from the incident oblique shock at x = 110–130 mm (peak about 200 kPa), the expansion near x = 165 mm and the re-compression after it.","Density: a network of oblique shocks and Prandtl–Meyer expansion fans spreads through the combustion chamber.","Mach number: low-speed zones behind each step mark the shear layers and recirculation regions where most fuel-air mixing happens.","Temperature: the hottest regions sit in the wake of the struts, so the steps act as flame anchors that sustain combustion.","Combustion efficiency reaches 0.88 with the split strut against 0.67 for the baseline, a gain of 21 percentage points. The single recirculation zone becomes four pockets, which increases reactive contact area and fuel residence time.","Mixing: full mixing is reached at x = 175 mm, which is 100 mm earlier than the single strut (x = 275 mm), thanks to the extra shear layers and vortices from the second strut.","Overall: the split-strut geometry clearly outperforms the single strut without changing fuel flow or combustor size. The report notes there is still scope for optimisation."]}
 ];
 var $=function(i){return document.getElementById(i)};
-$("cards").innerHTML=P.map(function(p,i){return '<a class="card" href="#/p/'+(i+1)+'"><div class="thumb '+p.t1+'"><div><b>'+p.k+'</b><small>'+p.kl+'</small></div></div><div class="cbody"><h3>'+p.t+'</h3><p>'+p.s+'</p><span class="open">Open project</span></div></a>'}).join("");
+$("cards").innerHTML=P.map(function(p,i){return '<a class="card" href="#" data-go="p'+(i+1)+'"><div class="thumb '+p.t1+'"><div><b>'+p.k+'</b><small>'+p.kl+'</small></div></div><div class="cbody"><h3>'+p.t+'</h3><p>'+p.s+'</p><span class="open">Open project</span></div></a>'}).join("");
 function detail(n){
  var p=P[n-1],pr=P[n-2],nx=P[n];
- var h='<div class="wrap pd"><a class="back" href="#/projects">Back to all projects</a><div class="ph"><h1>'+p.t+'</h1>'+p.tools.map(function(x){return '<span class="chip">'+x+'</span>'}).join("")+'<div class="thumb '+p.t1+'"><div><b>'+p.k+'</b><small>'+p.kl+'</small></div></div></div>';
+ var h='<div class="wrap pd"><a class="back" href="#" data-go="projects">Back to all projects</a><div class="ph"><h1>'+p.t+'</h1>'+p.tools.map(function(x){return '<span class="chip">'+x+'</span>'}).join("")+'<div class="thumb '+p.t1+'"><div><b>'+p.k+'</b><small>'+p.kl+'</small></div></div></div>';
  h+='<section><h2>Aim</h2><p class="aim">'+p.aim+'</p></section>';
  h+='<section><h2>Key results</h2><div class="stats">'+p.st.map(function(s){return '<div class="stat"><b>'+s[0]+'</b><span>'+s[1]+'</span></div>'}).join("")+'</div></section>';
  h+='<section><h2>Methodology</h2><ol class="steps">'+p.steps.map(function(s){return '<li><h4>'+s[0]+'</h4><p>'+s[1]+'</p></li>'}).join("")+'</ol></section>';
  h+='<section><h2>Results and figures</h2><div class="figs">'+p.f.map(function(f){return '<figure class="fig"><div class="im">'+(f[1]?'<img src="'+f[1]+'" alt="'+f[0]+'">':'Add image here')+'</div><figcaption>'+f[0]+'</figcaption></figure>'}).join("")+'</div><ul class="res" style="margin-top:28px">'+p.r.map(function(r){return '<li>'+r+'</li>'}).join("")+'</ul></section>';
- h+='<div class="pn"><span>'+(pr?'<a href="#/p/'+(n-1)+'"><small>Previous</small>'+pr.t+'</a>':'')+'</span><span style="text-align:right">'+(nx?'<a href="#/p/'+(n+1)+'"><small>Next</small>'+nx.t+'</a>':'')+'</span></div></div>';
+ h+='<div class="pn"><span>'+(pr?'<a href="#" data-go="p'+(n-1)+'"><small>Previous</small>'+pr.t+'</a>':'')+'</span><span style="text-align:right">'+(nx?'<a href="#" data-go="p'+(n+1)+'"><small>Next</small>'+nx.t+'</a>':'')+'</span></div></div>';
  $("detail").innerHTML=h;
 }
-function route(){
- var h=location.hash,m=h.match(/^#\/p\/(\d)$/);
+function go(id){
+ var m=/^p(\d)$/.exec(id);
  if(m&&P[m[1]-1]){$("home").hidden=true;$("detail").hidden=false;detail(+m[1]);window.scrollTo(0,0);return}
  $("detail").hidden=true;$("home").hidden=false;
- var id=h.replace("#/",""),el=id&&$(id);
+ var el=id&&$(id);
  if(el)el.scrollIntoView();else window.scrollTo(0,0);
 }
-window.addEventListener("hashchange",route);route();
+document.addEventListener("click",function(e){var a=e.target.closest("[data-go]");if(a){e.preventDefault();go(a.getAttribute("data-go"))}});
+go("");
 $("th").onclick=function(){var r=document.documentElement,c=r.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");r.dataset.theme=c==="dark"?"light":"dark"};
 </script>
 </body>
