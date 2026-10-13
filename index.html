@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfolio | Thermal Simulation & Fixture Design</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=Instrument+Sans:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3f5f7;--sf:#fff;--ink:#0e1a24;--mute:#566573;--line:#d6dde4;--hot:#e4572e;--cold:#2563eb;--hd:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;--bd:'Instrument Sans',Arial,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1118;--sf:#121c26;--ink:#e9eef2;--mute:#9aa9b6;--line:#223140;--hot:#ff7a45;--cold:#5b9cff}}
+:root[data-theme="dark"]{--bg:#0a1118;--sf:#121c26;--ink:#e9eef2;--mute:#9aa9b6;--line:#223140;--hot:#ff7a45;--cold:#5b9cff}
+*,*:before,*:after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 var(--bd)}
+h1,h2,h3,h4,.nav,.btn,.chip{font-family:var(--hd)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+[hidden]{display:none!important}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;gap:4px 22px;flex-wrap:wrap;align-items:center;padding:12px 5vw;font-weight:500;font-size:15px}
+.nav .logo{font-weight:800;font-size:17px;margin-right:auto;text-decoration:none}
+.nav a{text-decoration:none;color:var(--mute)}.nav a:hover{color:var(--ink)}
+.nav button{background:none;border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:4px 12px;font:500 13px var(--hd);cursor:pointer}
+.wrap{max-width:1040px;margin:0 auto;padding:0 5vw}
+section{padding:72px 0 0;scroll-margin-top:70px}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.1;margin:0 0 28px;font-weight:800;letter-spacing:-.02em}
+.hero{position:relative;overflow:hidden;padding:96px 0 40px}
+.hero:before{content:"";position:absolute;right:-12%;top:-10%;width:640px;height:640px;max-width:90vw;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff7a45 0,#f59e0b 22%,#06b6d4 52%,transparent 72%);filter:blur(70px);opacity:.45;pointer-events:none}
+.hero .wrap{position:relative}
+h1{font-size:clamp(2.6rem,8vw,5.4rem);line-height:.98;margin:0 0 24px;font-weight:800;letter-spacing:-.035em;max-width:11em}
+.lead{font-size:1.2rem;color:var(--mute);max-width:34em;margin:0 0 32px}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:13px 24px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;margin:0 8px 10px 0}
+.btn.alt{background:none;color:var(--ink);border:1.5px solid var(--ink);padding:11.5px 22px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+.card{display:flex;flex-direction:column;background:var(--sf);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 40px -18px rgba(0,0,0,.45)}
+.thumb{position:relative;height:180px;display:flex;align-items:flex-end;padding:16px 20px;color:#fff}
+.thumb b{font:800 2.4rem/1 var(--hd);letter-spacing:-.03em;text-shadow:0 2px 14px rgba(0,0,0,.4)}
+.thumb small{display:block;font:500 13px var(--bd);opacity:.92;margin-top:4px}
+.t1{background:radial-gradient(circle at 70% 25%,#fdba74,transparent 50%),linear-gradient(135deg,#1e3a8a,#0891b2 60%,#65a30d)}
+.t2{background:repeating-linear-gradient(90deg,rgba(255,255,255,.2) 0 2px,transparent 2px 24px),linear-gradient(90deg,#0f766e,#f59e0b 55%,#dc2626)}
+.t3{background:repeating-linear-gradient(115deg,rgba(255,255,255,.22) 0 2px,transparent 2px 30px),linear-gradient(120deg,#312e81,#be123c 60%,#f97316)}
+.cbody{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.cbody h3{margin:0 0 8px;font-size:1.15rem;line-height:1.25;font-weight:800}
+.cbody p{margin:0 0 16px;color:var(--mute);font-size:15.5px;line-height:1.55}
+.open{margin-top:auto;font:800 14px var(--hd);color:var(--hot)}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.grp{background:var(--sf);border:1px solid var(--line);border-radius:16px;padding:22px}
+.grp h3{margin:0 0 12px;font-size:1.05rem;font-weight:800}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:20px;padding:3px 12px;margin:0 6px 8px 0;font-size:13.5px;font-weight:500;color:var(--mute)}
+.job{background:var(--sf);border:1px solid var(--line);border-left:5px solid var(--cold);border-radius:16px;padding:26px 28px}
+.job h3{margin:0;font-size:1.3rem;font-weight:800}.job .w{margin:2px 0 14px;color:var(--mute);font:500 14px var(--hd)}
+.job ul{margin:0;padding-left:1.2em}.job li{margin-bottom:8px}
+.contact{padding-bottom:90px}
+.contact .box{background:var(--ink);color:var(--bg);border-radius:22px;padding:48px 36px}
+.contact .box h2{margin-bottom:12px}.contact .box p{margin:0 0 24px;opacity:.8;max-width:32em}
+.contact .btn{background:var(--bg);color:var(--ink)}.contact .btn.alt{background:none;color:var(--bg);border-color:var(--bg)}
+footer{border-top:1px solid var(--line);padding:22px 5vw;text-align:center;color:var(--mute);font-size:14px}
+/* project page */
+.back{display:inline-block;margin:36px 0 18px;color:var(--mute);text-decoration:none;font:500 15px var(--hd)}.back:hover{color:var(--ink)}
+.ph h1{font-size:clamp(2rem,5.5vw,3.6rem);max-width:15em;margin-bottom:16px}
+.ph .thumb{height:230px;border-radius:20px;margin:26px 0 8px}
+.pd h2{font-size:1.7rem;margin:0 0 16px}
+.pd section{padding-top:56px}
+.aim{font-size:1.2rem;max-width:40em}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.stat{background:var(--sf);border:1px solid var(--line);border-radius:16px;padding:22px}
+.stat b{display:block;font:800 2.2rem/1.1 var(--hd);letter-spacing:-.03em;color:var(--hot)}
+.stat span{color:var(--mute);font-size:15px}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;max-width:44em}
+.steps li{counter-increment:s;position:relative;padding:0 0 22px 56px;border-left:2px solid var(--line);margin-left:16px}
+.steps li:last-child{border-color:transparent}
+.steps li:before{content:counter(s);position:absolute;left:-17px;top:-2px;width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--bg);font:800 14px/32px var(--hd);text-align:center}
+.steps h4{margin:0 0 2px;font-size:1.05rem;font-weight:800}.steps p{margin:0;color:var(--mute)}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.fig{margin:0}
+.fig .im{aspect-ratio:16/10;border:2px dashed var(--line);border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--mute);font-size:14px;background:var(--sf);overflow:hidden}
+.fig img{width:100%;height:100%;object-fit:cover;display:block}
+.fig figcaption{margin-top:8px;font-size:14.5px;color:var(--mute)}
+.res{max-width:44em;padding-left:1.2em}.res li{margin-bottom:8px}
+.pn{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:64px 0 80px;border-top:1px solid var(--line);padding-top:24px}
+.pn a{text-decoration:none;font:800 16px var(--hd);max-width:46%}.pn small{display:block;color:var(--mute);font:500 13px var(--bd)}
+@media(max-width:600px){body{font-size:16px}.contact .box{padding:34px 22px}.job{padding:20px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<nav class="nav"><a class="logo" href="#/">YOUR NAME</a><a href="#/projects">Projects</a><a href="#/skills">Skills</a><a href="#/internship">Internship</a><a href="#/contact">Contact</a><button id="th" type="button">Light / Dark</button></nav>
 
+<div id="home">
+<header class="hero"><div class="wrap">
+<h1>Heat, flow and the fixtures that hold them.</h1>
+<p class="lead">Mechanical engineer working on thermal FEA, CFD and precision fixture design. I write my own solvers in MATLAB and validate them against ANSYS.</p>
+<a class="btn" href="#/projects">See projects</a><a class="btn alt" href="#/contact">Get in touch</a>
+</div></header>
+<main class="wrap">
+<section id="projects"><h2>Projects</h2><div class="cards" id="cards"></div></section>
+<section id="skills"><h2>Technical skills</h2><div class="groups">
+<div class="grp"><h3>Fixture design</h3><span class="chip">3-2-1 locating principle</span><span class="chip">Tolerance stack-up</span><span class="chip">Fixed-floating pin</span><span class="chip">Thermal expansion compensation</span></div>
+<div class="grp"><h3>Simulation and FEA</h3><span class="chip">ANSYS Mechanical</span><span class="chip">Steady-state thermal</span><span class="chip">Static structural</span><span class="chip">Coupled thermal-structural</span><span class="chip">ANSYS Fluent (CFD)</span></div>
+<div class="grp"><h3>Numerical methods</h3><span class="chip">Finite Volume Method</span><span class="chip">Finite Difference Method</span><span class="chip">SIMPLE algorithm</span><span class="chip">Discretisation</span><span class="chip">Time-marching schemes</span></div>
+<div class="grp"><h3>CAD and design</h3><span class="chip">SpaceClaim</span><span class="chip">Design Modeler</span><span class="chip">SolidWorks</span></div>
+<div class="grp"><h3>Programming</h3><span class="chip">MATLAB</span><span class="chip">Python</span></div>
+</div></section>
+<section id="internship"><h2>Internship</h2><div class="job"><h3>Bharat Heavy Electricals Limited, Bhopal</h3><p class="w">Jun 2022 – Jul 2022</p><ul>
+<li>Observed CNC and CIM-based machining of turbine blades, gaining exposure to high-tolerance precision manufacturing.</li>
+<li>Witnessed switchgear and control unit assembly on the shop floor, building understanding of electromechanical integration and production sequencing.</li>
+<li>Observed the use of CMM machines and precision gauges for dimensional inspection, developing awareness of manufacturing-to-specification validation.</li></ul></div></section>
+<section class="contact" id="contact"><div class="box"><h2>Let's talk</h2><p>Open to internships and entry-level roles in thermal analysis, CFD and mechanical design.</p>
+<a class="btn" href="mailto:your.email@example.com">Email me</a><a class="btn alt" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a></div></section>
+</main></div>
+
+<div id="detail" hidden></div>
+<footer>© 2026 Your Name</footer>
+
+<script>
+/* To add a real image: put its link inside the quotes after the caption, e.g. ["Temperature contour","https://..."] */
+var P=[
+{k:"0.034°C",kl:"gradient across base plate",t1:"t1",
+ t:"Thermal Calibration Fixture with Floating-Pin Compensation",
+ s:"A 3-2-1 fixed and floating pin fixture in Al 6061, validated with coupled thermal-structural FEA.",
+ tools:["ANSYS Mechanical","SolidWorks","Al 6061"],
+ aim:"Design an aluminium fixture that locates a PCB and heater accurately, while letting the part expand freely when heated, and prove it with simulation and tolerance stack-up.",
+ st:[["0.034°C","Thermal gradient across the base plate at the 80°C test condition"],["1.75%","Difference between FEA and analytical expansion (0.1913 mm at ΔT = 55°C)"],["0.159 mm","Safety margin on the floating pin slot from tolerance stack-up"]],
+ steps:[["Locating scheme","Applied the 3-2-1 principle with a ⌀6 mm fixed datum pin and a 6×6.35 mm oval slot for the floating pin, in Al 6061."],["Feature sizing","Sized the PCB retention slot, heater recess, TIM groove and thermocouple channel to standard component specifications so the fixture can be manufactured."],["Thermal analysis","Ran a steady-state thermal simulation in ANSYS at the 80°C test condition."],["Coupled structural analysis","Passed the thermal result into static structural to predict expansion at ΔT = 55°C."],["Validation","Compared the FEA expansion with the analytical result and checked the floating slot with a tolerance stack-up."]],
+ f:[["CAD model of the fixture",""],["Temperature contour at 80°C",""],["Total deformation at ΔT = 55°C",""],["Tolerance stack-up on the floating pin slot",""]],
+ r:["The base plate stays almost isothermal (0.034°C gradient), so the part sees a uniform temperature.","FEA predicted 0.1913 mm thermal expansion, within 1.75% of the analytical value.","The floating pin slot keeps a 0.159 mm margin, so the part will not bind as it expands."]},
+{k:"~12%",kl:"deviation from ANSYS Fluent",t1:"t2",
+ t:"Transient Finite Volume Solver for IGBT Thermal Management",
+ s:"An in-house MATLAB FVM solver for conjugate heat transfer in a mini-channel IGBT cooler at 104 W/cm².",
+ tools:["MATLAB","Finite Volume Method","SIMPLE","ANSYS Fluent"],
+ aim:"Build my own transient solver for conjugate heat transfer in a mini-channel IGBT cooler, and show it matches a commercial tool closely enough to be trusted.",
+ st:[["104 W/cm²","Heat flux on the mini-channel IGBT cooler"],["~12%","Deviation from ANSYS Fluent, consistent with FEA acceptance practice"],["In-house","MATLAB solver, SIMPLE algorithm, structured non-uniform mesh"]],
+ steps:[["Discretisation","Applied the Finite Volume Method on a structured non-uniform mesh for conjugate heat transfer."],["Flow coupling","Used the SIMPLE algorithm with transient time-marching."],["Test case","Ran the cooler at 104 W/cm² heat flux."],["Benchmark","Ran the same case in ANSYS Fluent for comparison."],["Verification","Used mesh-independence and convergence studies to find and fix the sources of discrepancy."],["Transients","Simulated flow stop–restart cycles to see how temperature rises."]],
+ f:[["Mesh of the cooler",""],["Temperature field, MATLAB vs Fluent",""],["Mesh-independence study",""],["Temperature rise during flow stop–restart",""]],
+ r:["The solver reached about 12% deviation from ANSYS Fluent.","Flow stop–restart runs show how fast temperature rises, which applies directly to calibration station thermal cycling.","Writing the solver shows thermal analysis skills beyond commercial tools."]},
+{k:"98.7%",kl:"combustion efficiency at β = 1°",t1:"t3",
+ t:"Strut Inclination and Flame Stabilisation in a Split-Strut Scramjet Combustor",
+ s:"ANSYS Fluent study of four strut angles using SST k-ω and the FR/ED combustion model.",
+ tools:["ANSYS Fluent","SST k-ω","FR/ED combustion"],
+ aim:"Find how the inclination of a split strut changes flame stabilisation and combustion efficiency in a scramjet combustor.",
+ st:[["98.7%","Combustion efficiency at the optimal β = 1°"],["71.6%","Efficiency at β = 3°, after the recirculation zones collapsed"],["≤12%","Wall pressure deviation against DLR Waidmann et al. data"]],
+ steps:[["Geometry and mesh","Modelled four strut angles (β = 0°, 1°, 2°, 3°) on a 459,800-cell structured mesh."],["Models","Used SST k-ω turbulence with the FR/ED combustion model in ANSYS Fluent."],["Validation","Checked the non-reacting flow against DLR Waidmann et al. experimental data."],["Parametric runs","Ran the reacting flow for all four strut angles."],["Comparison","Compared combustion efficiency, recirculation zones and shock structure."]],
+ f:[["Combustor geometry and mesh",""],["Wall pressure vs DLR experiment",""],["Temperature contours for each β",""],["Recirculation zones at β = 1° and 3°",""]],
+ r:["β = 1° gave the best combustion efficiency, 98.7%.","At β = 3° efficiency fell to 71.6% because excessive oblique shock strength collapsed the recirculation zones.","Non-reacting flow matched experimental wall pressure within 12%."]}
+];
+var $=function(i){return document.getElementById(i)};
+$("cards").innerHTML=P.map(function(p,i){return '<a class="card" href="#/p/'+(i+1)+'"><div class="thumb '+p.t1+'"><div><b>'+p.k+'</b><small>'+p.kl+'</small></div></div><div class="cbody"><h3>'+p.t+'</h3><p>'+p.s+'</p><span class="open">Open project</span></div></a>'}).join("");
+function detail(n){
+ var p=P[n-1],pr=P[n-2],nx=P[n];
+ var h='<div class="wrap pd"><a class="back" href="#/projects">Back to all projects</a><div class="ph"><h1>'+p.t+'</h1>'+p.tools.map(function(x){return '<span class="chip">'+x+'</span>'}).join("")+'<div class="thumb '+p.t1+'"><div><b>'+p.k+'</b><small>'+p.kl+'</small></div></div></div>';
+ h+='<section><h2>Aim</h2><p class="aim">'+p.aim+'</p></section>';
+ h+='<section><h2>Key results</h2><div class="stats">'+p.st.map(function(s){return '<div class="stat"><b>'+s[0]+'</b><span>'+s[1]+'</span></div>'}).join("")+'</div></section>';
+ h+='<section><h2>Methodology</h2><ol class="steps">'+p.steps.map(function(s){return '<li><h4>'+s[0]+'</h4><p>'+s[1]+'</p></li>'}).join("")+'</ol></section>';
+ h+='<section><h2>Results and figures</h2><div class="figs">'+p.f.map(function(f){return '<figure class="fig"><div class="im">'+(f[1]?'<img src="'+f[1]+'" alt="'+f[0]+'">':'Add image here')+'</div><figcaption>'+f[0]+'</figcaption></figure>'}).join("")+'</div><ul class="res" style="margin-top:28px">'+p.r.map(function(r){return '<li>'+r+'</li>'}).join("")+'</ul></section>';
+ h+='<div class="pn"><span>'+(pr?'<a href="#/p/'+(n-1)+'"><small>Previous</small>'+pr.t+'</a>':'')+'</span><span style="text-align:right">'+(nx?'<a href="#/p/'+(n+1)+'"><small>Next</small>'+nx.t+'</a>':'')+'</span></div></div>';
+ $("detail").innerHTML=h;
+}
+function route(){
+ var h=location.hash,m=h.match(/^#\/p\/(\d)$/);
+ if(m&&P[m[1]-1]){$("home").hidden=true;$("detail").hidden=false;detail(+m[1]);window.scrollTo(0,0);return}
+ $("detail").hidden=true;$("home").hidden=false;
+ var id=h.replace("#/",""),el=id&&$(id);
+ if(el)el.scrollIntoView();else window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);route();
+$("th").onclick=function(){var r=document.documentElement,c=r.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");r.dataset.theme=c==="dark"?"light":"dark"};
+</script>
+</body>
+</html>
